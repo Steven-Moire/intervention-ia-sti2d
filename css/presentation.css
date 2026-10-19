@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   gap: 0.6em;
   border-bottom: 2px solid var(--bordure);
+  overflow-wrap: break-word; /* un mot plus large que l'écran est coupé plutôt que de déborder */
 }
 
 /* Sans JavaScript : toutes les diapositives s'affichent les unes sous les autres. */
@@ -118,6 +119,9 @@ body.js .diapo.active {
   border: 2px solid var(--bordure);
   border-radius: var(--rayon);
   padding: 0.6em 0.8em;
+  /* Mots longs (« instrumentation ») coupés avec un tiret si la police est très agrandie. */
+  hyphens: auto;
+  overflow-wrap: anywhere;
 }
 
 .carte h3 {

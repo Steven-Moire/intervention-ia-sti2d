@@ -1,0 +1,11 @@
+{
+  "name": "intervention-ia-sti2d-tests",
+  "private": true,
+  "description": "Test d'affichage sur téléphone (outil de développement, inutile pour la présentation)",
+  "scripts": {
+    "test": "node telephones.js"
+  },
+  "devDependencies": {
+    "playwright-core": "1.48.2"
+  }
+}

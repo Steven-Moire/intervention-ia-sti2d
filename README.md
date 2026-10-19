@@ -32,6 +32,8 @@ intervention-ia-sti2d/
 │   ├── check_links.py          vérifie les liens du dépôt
 │   ├── config_liens.py         lecture de js/config.js (utilisé par les deux scripts)
 │   └── requirements.txt        qrcode (seule dépendance)
+├── tests/
+│   └── telephones.js           test d'affichage sur écrans de téléphone (Node, facultatif)
 ├── .gitignore  .nojekyll  LICENSE  README.md
 ```
 
@@ -98,6 +100,14 @@ Chaque section est un bloc `<section class="diapo" data-section="N">` réutilisa
    python scripts/check_links.py            # hors ligne
    python scripts/check_links.py --online   # teste aussi les sites externes
    python scripts/check_links.py --strict   # échoue s'il reste un TODO_URL
+   ```
+
+4. Facultatif — vérifier l'affichage sur téléphone (Node.js requis, utilise Edge ou Chrome déjà installé) :
+
+   ```bash
+   cd tests
+   npm install
+   npm test                      # ou : NAVIGATEUR=chrome npm test
    ```
 
 Un lien encore en `TODO_URL` s'affiche barré avec la mention « lien à compléter », et son QR code est remplacé par un cadre « QR à générer » : rien ne casse pendant la séance.

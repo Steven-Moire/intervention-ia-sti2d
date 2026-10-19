@@ -5,6 +5,9 @@ __pycache__/
 venv/
 .ruff_cache/
 
+# Tests (Node)
+node_modules/
+
 # Secrets : ne jamais publier
 .env
 .env.*
