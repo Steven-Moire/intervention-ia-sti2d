@@ -15,9 +15,57 @@
   --alerte: #92400e;
   --alerte-fond: #fef3c7;
   --bordure: #c7cfdb;
+  --texte-sur-accent: #ffffff;
+  --fond-barre: rgba(255, 255, 255, 0.94);
+  color-scheme: light;
   --rayon: 0.6rem;
   --police: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --police-mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+
+/* Thème sombre : suit le réglage du système, sauf si data-theme="clair" ou "sombre"
+   est posé sur <html> (touche S ou ?theme= dans la présentation).
+   Écran seulement : l'export PDF reste en clair. Les deux blocs doivent rester identiques. */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="clair"]) {
+    --fond: #111827;
+    --fond-doux: #1f2937;
+    --texte: #f3f4f6;
+    --texte-doux: #cbd5e1;
+    --accent: #93b4ff;
+    --accent-fond: #1e3a8a;
+    --ok: #86efac;
+    --ok-fond: #14532d;
+    --ko: #fca5a5;
+    --ko-fond: #7f1d1d;
+    --alerte: #fcd34d;
+    --alerte-fond: #78350f;
+    --bordure: #4b5563;
+    --texte-sur-accent: #111827;
+    --fond-barre: rgba(17, 24, 39, 0.94);
+    color-scheme: dark;
+  }
+}
+
+@media screen {
+  :root[data-theme="sombre"] {
+    --fond: #111827;
+    --fond-doux: #1f2937;
+    --texte: #f3f4f6;
+    --texte-doux: #cbd5e1;
+    --accent: #93b4ff;
+    --accent-fond: #1e3a8a;
+    --ok: #86efac;
+    --ok-fond: #14532d;
+    --ko: #fca5a5;
+    --ko-fond: #7f1d1d;
+    --alerte: #fcd34d;
+    --alerte-fond: #78350f;
+    --bordure: #4b5563;
+    --texte-sur-accent: #111827;
+    --fond-barre: rgba(17, 24, 39, 0.94);
+    color-scheme: dark;
+  }
 }
 
 *,

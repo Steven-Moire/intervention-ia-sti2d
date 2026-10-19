@@ -143,11 +143,33 @@ body.js .diapo.active {
   width: 100%;
   max-height: 52vh;
   height: auto;
+  fill: var(--texte); /* couleur héritée des textes sans attribut fill (noir par défaut sinon) */
 }
 
 .schema text {
   font-family: var(--police);
 }
+
+/* Les couleurs écrites dans les SVG sont celles du thème clair : on les rebranche sur la
+   palette pour qu'elles suivent le thème sombre (le CSS l'emporte sur l'attribut). */
+.schema [fill="#ffffff"] { fill: var(--fond); }
+.schema text[fill="#ffffff"] { fill: var(--texte-sur-accent); }
+.schema [fill="#111827"] { fill: var(--texte); }
+.schema [fill="#374151"] { fill: var(--texte-doux); }
+.schema [fill="#f1f4f9"] { fill: var(--fond-doux); }
+.schema [fill="#1d4ed8"] { fill: var(--accent); }
+.schema [fill="#dbe6ff"] { fill: var(--accent-fond); }
+.schema [fill="#166534"] { fill: var(--ok); }
+.schema [fill="#dcfce7"] { fill: var(--ok-fond); }
+.schema [fill="#9a1c1c"] { fill: var(--ko); }
+.schema [fill="#fde2e2"] { fill: var(--ko-fond); }
+.schema [stroke="#ffffff"] { stroke: var(--fond); }
+.schema [stroke="#111827"] { stroke: var(--texte); }
+.schema [stroke="#374151"] { stroke: var(--texte-doux); }
+.schema [stroke="#1d4ed8"] { stroke: var(--accent); }
+.schema [stroke="#166534"] { stroke: var(--ok); }
+.schema [stroke="#9a1c1c"] { stroke: var(--ko); }
+.schema [stroke="#c7cfdb"] { stroke: var(--bordure); }
 
 .qr-grille {
   display: grid;
@@ -270,7 +292,7 @@ body.js .navigation {
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.6rem calc(0.35rem + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--fond-barre);
   border-top: 1px solid var(--bordure);
   font-size: 1rem;
 }

@@ -82,7 +82,7 @@ body {
   margin-top: 1rem;
   background: var(--accent);
   border-color: var(--accent);
-  color: #ffffff;
+  color: var(--texte-sur-accent);
 }
 
 .choix {
@@ -200,26 +200,4 @@ body {
 .pied {
   text-align: center;
   margin-top: 1.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fond: #111827;
-    --fond-doux: #1f2937;
-    --texte: #f3f4f6;
-    --texte-doux: #cbd5e1;
-    --accent: #93b4ff;
-    --accent-fond: #1e3a8a;
-    --ok: #86efac;
-    --ok-fond: #14532d;
-    --ko: #fca5a5;
-    --ko-fond: #7f1d1d;
-    --alerte: #fcd34d;
-    --alerte-fond: #78350f;
-    --bordure: #4b5563;
-  }
-
-  .bouton.principal {
-    color: #111827;
-  }
 }

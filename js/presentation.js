@@ -2,9 +2,10 @@
  * presentation.js — navigation de la présentation, sans dépendance.
  *
  * Clavier : flèches, Page préc./suiv., Espace, Début/Fin
- *           N = notes de l'orateur, F = plein écran, A ou ? = aide
+ *           N = notes de l'orateur, F = plein écran, A ou ? = aide, S = thème clair/sombre
  * Tactile : balayage gauche/droite
- * URL     : #12 ouvre la diapositive 12 ; ?parcours=1h masque les diapositives « 2h »
+ * URL     : #12 ouvre la diapositive 12 ; ?parcours=1h masque les diapositives « 2h » ;
+ *           ?theme=clair ou ?theme=sombre force le thème (sinon : réglage du système)
  */
 (function () {
   "use strict";
@@ -31,6 +32,37 @@
     if (badge) {
       badge.textContent = parcours === "1h" ? "Parcours 1 h" : "Parcours 2 h";
     }
+  }
+
+  function lireTheme() {
+    var theme = new URLSearchParams(window.location.search).get("theme");
+    return theme === "clair" || theme === "sombre" ? theme : null;
+  }
+
+  function themeActuel() {
+    var force = document.documentElement.getAttribute("data-theme");
+    if (force) {
+      return force;
+    }
+    var systemeSombre = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return systemeSombre ? "sombre" : "clair";
+  }
+
+  // theme null = suivre le système ; le bouton affiche le thème vers lequel il bascule.
+  function appliquerTheme(theme) {
+    if (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+    var bouton = document.getElementById("bouton-theme");
+    if (bouton) {
+      var sombre = themeActuel() === "sombre";
+      bouton.textContent = sombre ? "☀︎" : "☾︎";
+      bouton.setAttribute("aria-label", sombre ? "Passer en thème clair" : "Passer en thème sombre");
+    }
+  }
+
+  function basculerTheme() {
+    appliquerTheme(themeActuel() === "sombre" ? "clair" : "sombre");
   }
 
   function lireHash() {
@@ -123,6 +155,8 @@
     a: basculerAide,
     A: basculerAide,
     "?": basculerAide,
+    s: basculerTheme,
+    S: basculerTheme,
     Escape: function () {
       var aide = document.getElementById("aide");
       if (aide) {
@@ -172,6 +206,7 @@
       "bouton-precedent": precedente,
       "bouton-suivant": suivante,
       "bouton-notes": basculerNotes,
+      "bouton-theme": basculerTheme,
       "bouton-aide": basculerAide,
       "aide-fermer": basculerAide
     };
@@ -186,6 +221,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("js");
     preparerParcours(lireParcours());
+    appliquerTheme(lireTheme());
     brancherBoutons();
     activerSwipe();
     document.addEventListener("keydown", surClavier);
