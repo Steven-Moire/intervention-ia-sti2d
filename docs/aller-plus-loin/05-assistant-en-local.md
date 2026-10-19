@@ -33,8 +33,8 @@ Avantages :
    - sa **licence** : certaines sont très libres (Apache 2.0, MIT), d'autres limitent l'usage. Elle est indiquée sur la page du modèle ;
    - sa **taille** : commence petit (de 1 à 8 milliards de paramètres) ;
    - s'il est entraîné pour le **code** ou pour la **conversation**.
-2. **Un logiciel qui fait tourner le modèle.** Il charge les poids et répond aux questions. Il en existe plusieurs, gratuits, en ligne de commande ou avec une interface graphique (par exemple Ollama, LM Studio, llama.cpp…). Beaucoup s'occupent aussi du téléchargement du modèle.
-3. **(Facultatif) Un assistant de code** qui se branche sur ce logiciel local. Plusieurs outils libres savent utiliser un modèle local (par exemple Aider, Continue, OpenHands… cherche « assistant de code modèle local » pour une liste à jour). C'est lui qui ajoute les **outils** et la **boucle** de la fiche 2.
+2. **Un logiciel qui fait tourner le modèle.** Il charge les poids et répond aux questions. Il en existe plusieurs, gratuits, en ligne de commande ou avec une interface graphique : par exemple Ollama et llama.cpp, qui sont **libres** (leur code est public), ou LM Studio, **gratuit mais pas libre**. Gratuit ne veut pas dire libre : vérifie la licence du logiciel comme celle du modèle. Beaucoup s'occupent aussi du téléchargement du modèle.
+3. **(Facultatif) Un assistant de code** qui se branche sur ce logiciel local. Plusieurs outils libres savent utiliser un modèle local (par exemple Aider, Continue, OpenHands… cherche « assistant de code modèle local » pour une liste à jour). Commence par un outil simple : OpenHands, par exemple, demande d'installer Docker et marche mal avec un petit modèle. C'est lui qui ajoute les **outils** et la **boucle** de la fiche 2.
 
 ## Démarche générale
 
