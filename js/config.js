@@ -10,19 +10,19 @@
  * scripts/generate_qr.py et scripts/check_links.py le lisent aussi.
  */
 window.INTERVENTION = {
-  intervenant: "Prénom Nom",
+  intervenant: "Steven-Moire",
   role: "Ingénieur en intelligence artificielle, ancien enseignant"
 };
 
 window.LIENS = {
   "site": {
     label: "Cette présentation en ligne (GitHub Pages)",
-    url: "TODO_URL",
+    url: "https://steven-moire.github.io/intervention-ia-sti2d/",
     credit: ""
   },
   "depot": {
     label: "Le dépôt GitHub du projet",
-    url: "TODO_URL",
+    url: "https://github.com/Steven-Moire/intervention-ia-sti2d",
     credit: ""
   },
   "quiz": {
@@ -39,12 +39,12 @@ window.LIENS = {
   },
   "mentimeter": {
     label: "Sondage Mentimeter",
-    url: "TODO_URL",
+    url: "https://www.menti.com/al9xum19gsw1",
     credit: "Mentimeter"
   },
   "kahoot": {
     label: "Quiz Kahoot de fin de séance",
-    url: "TODO_URL",
+    url: "https://kahoot.it/",
     credit: "Kahoot!"
   },
   "teachable-machine": {
