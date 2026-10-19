@@ -1,0 +1,78 @@
+#!/bin/sh
+# pre-commit — bloque un commit qui contiendrait un secret ou un mot interdit.
+#
+# Installation (depuis la racine du dépôt) :
+#   cp docs/aller-plus-loin/kit/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+# Mots interdits personnels : un par ligne dans .termes-interdits.txt (à la racine,
+# déjà listé dans .gitignore). Les lignes vides et celles qui commencent par # sont ignorées.
+#
+# Le script n'affiche jamais le mot trouvé (il pourrait finir dans une capture d'écran) :
+# seulement le fichier concerné.
+
+LISTE_PERSO=".termes-interdits.txt"
+CE_SCRIPT="docs/aller-plus-loin/kit/hooks/pre-commit" # contient les motifs : on ne le scanne pas
+
+# Motifs de secrets courants (expressions régulières étendues).
+MOTIFS_SECRETS='-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{20,}'
+MOTIF_AFFECTATION='(password|passwd|mot_de_passe|secret|api[_-]?key|token)[[:space:]]*[:=][[:space:]]*["'"'"'][^"'"'"']{6,}'
+
+probleme=0
+
+signaler() {
+	printf '  ✗ %s : %s\n' "$1" "$2" >&2
+	probleme=1
+}
+
+# Lignes ajoutées par ce commit dans un fichier donné.
+lignes_ajoutees() {
+	git diff --cached --no-color -U0 -- "$1" | grep '^+' | grep -v '^+++'
+}
+
+# Liste des mots interdits, sans lignes vides ni commentaires.
+termes_perso() {
+	[ -f "$LISTE_PERSO" ] && grep -v -e '^[[:space:]]*#' -e '^[[:space:]]*$' "$LISTE_PERSO"
+}
+
+fichiers=$(git diff --cached --name-only --diff-filter=ACM)
+termes=$(termes_perso)
+
+# IFS = retour à la ligne : les noms de fichiers avec espaces restent entiers.
+ancien_ifs=$IFS
+IFS='
+'
+for fichier in $fichiers; do
+	[ "$fichier" = "$CE_SCRIPT" ] && continue
+	if [ "$fichier" = "$LISTE_PERSO" ]; then
+		signaler "$fichier" "ta liste de mots interdits ne doit pas être publiée (ajoute-la au .gitignore)"
+		continue
+	fi
+
+	case "$(basename "$fichier")" in
+	.env.example) ;;
+	.env | .env.*) signaler "$fichier" "fichier .env (secrets) : ne pas le committer" ;;
+	esac
+
+	ajouts=$(lignes_ajoutees "$fichier")
+	[ -z "$ajouts" ] && continue
+
+	if printf '%s\n' "$ajouts" | grep -E -q -e "$MOTIFS_SECRETS"; then
+		signaler "$fichier" "ressemble à une clé ou un jeton"
+	fi
+	if printf '%s\n' "$ajouts" | grep -E -i -q -e "$MOTIF_AFFECTATION"; then
+		signaler "$fichier" "ressemble à un mot de passe écrit en clair"
+	fi
+	if [ -n "$termes" ] && printf '%s\n' "$ajouts" | grep -F -i -w -q -e "$termes"; then
+		signaler "$fichier" "contient un mot de $LISTE_PERSO"
+	fi
+done
+IFS=$ancien_ifs
+
+if [ "$probleme" -ne 0 ]; then
+	echo >&2
+	echo "Commit bloqué. Retire ces lignes, ou range le secret dans un fichier ignoré par git." >&2
+	echo "Si c'est une fausse alerte et que tu en es sûr : git commit --no-verify" >&2
+	exit 1
+fi
+exit 0

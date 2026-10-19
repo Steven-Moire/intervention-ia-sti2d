@@ -1,0 +1,225 @@
+/* quiz.css — activité « IA ou pas IA ? », pensée d'abord pour le téléphone. */
+
+body {
+  font-size: 1.125rem;
+  background: var(--fond-doux);
+}
+
+.quiz {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+
+.quiz-entete h1 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 1.9rem;
+  color: var(--accent);
+}
+
+.critere {
+  margin: 0 0 1rem;
+  color: var(--texte-doux);
+}
+
+.carte-quiz {
+  background: var(--fond);
+  border: 2px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.carte-quiz h2 {
+  margin: 0.6rem 0 0.3rem;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.detail {
+  margin: 0 0 1rem;
+}
+
+.petit {
+  font-size: 0.95rem;
+  color: var(--texte-doux);
+}
+
+.quiz-progression {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.barre {
+  height: 0.5rem;
+  background: var(--fond-doux);
+  border-radius: 999px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+
+#barre-quiz {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.bouton {
+  display: block;
+  width: 100%;
+  min-height: 3.2rem;
+  border-radius: var(--rayon);
+  border: 3px solid var(--bordure);
+  background: var(--fond);
+  color: var(--texte);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.bouton.principal {
+  margin-top: 1rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.choix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.choix .bouton {
+  min-height: 4.5rem;
+  font-size: 1.4rem;
+}
+
+.choix-ia {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.bouton.juste {
+  background: var(--ok-fond);
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.bouton.faux {
+  background: var(--ko-fond);
+  border-color: var(--ko);
+  color: var(--ko);
+}
+
+.bouton:disabled {
+  cursor: default;
+}
+
+.bouton:disabled:not(.juste):not(.faux) {
+  opacity: 0.45;
+}
+
+.correction {
+  margin-top: 1rem;
+  border-top: 2px solid var(--bordure);
+  padding-top: 0.6rem;
+}
+
+.correction p {
+  margin: 0.4rem 0;
+}
+
+.verdict {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.verdict.juste {
+  color: var(--ok);
+}
+
+.verdict.faux {
+  color: var(--ko);
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.badge.ia {
+  background: var(--accent-fond);
+  color: var(--accent);
+}
+
+.badge.pas-ia {
+  background: var(--fond-doux);
+  color: var(--texte);
+  border: 1px solid var(--bordure);
+}
+
+.nuance {
+  background: var(--alerte-fond);
+  border-left: 4px solid var(--alerte);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.3rem;
+}
+
+.score-final {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0.2rem 0;
+  color: var(--accent);
+}
+
+.recap {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recap li {
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.recap li.juste {
+  background: var(--ok-fond);
+}
+
+.recap li.faux {
+  background: var(--ko-fond);
+}
+
+.pied {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #111827;
+    --fond-doux: #1f2937;
+    --texte: #f3f4f6;
+    --texte-doux: #cbd5e1;
+    --accent: #93b4ff;
+    --accent-fond: #1e3a8a;
+    --ok: #86efac;
+    --ok-fond: #14532d;
+    --ko: #fca5a5;
+    --ko-fond: #7f1d1d;
+    --alerte: #fcd34d;
+    --alerte-fond: #78350f;
+    --bordure: #4b5563;
+  }
+
+  .bouton.principal {
+    color: #111827;
+  }
+}

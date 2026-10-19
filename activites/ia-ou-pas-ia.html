@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IA ou pas IA ?</title>
+  <meta name="description" content="Mini-quiz : 12 objets du quotidien, sont-ils de l'intelligence artificielle ? Fonctionne hors ligne, rien n'est envoyé.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/commun.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <script src="../js/quiz-donnees.js"></script>
+  <script src="../js/quiz.js"></script>
+</head>
+<body>
+<main class="quiz">
+
+  <header class="quiz-entete">
+    <h1>IA ou pas IA ?</h1>
+    <p class="critere">Critère : le comportement est-il <strong>codé à la main</strong> ou <strong>appris à partir de données</strong> ?</p>
+  </header>
+
+  <noscript>
+    <p class="carte-quiz">Cette activité a besoin de JavaScript. Ton professeur peut aussi la faire à l'oral.</p>
+  </noscript>
+
+  <section id="ecran-accueil" class="carte-quiz" hidden>
+    <p>12 objets du quotidien. Pour chacun, choisis <strong>IA</strong> ou <strong>Pas IA</strong>, puis lis la correction.</p>
+    <p class="petit">Ton score reste sur ton téléphone : rien n'est envoyé, aucune inscription.</p>
+    <button type="button" class="bouton principal" id="bouton-commencer">Commencer</button>
+  </section>
+
+  <section id="ecran-question" class="carte-quiz" hidden aria-live="polite">
+    <div class="quiz-progression">
+      <span id="question-numero">1 / 12</span>
+      <span id="question-score">Score : 0</span>
+    </div>
+    <div class="barre" aria-hidden="true"><div id="barre-quiz"></div></div>
+    <h2 id="question-titre">…</h2>
+    <p id="question-detail" class="detail">…</p>
+
+    <div class="choix" id="choix">
+      <button type="button" class="bouton choix-ia" data-reponse="ia">IA</button>
+      <button type="button" class="bouton choix-pas-ia" data-reponse="pas-ia">Pas IA</button>
+    </div>
+
+    <div id="correction" class="correction" hidden>
+      <p id="correction-verdict" class="verdict">…</p>
+      <p><span id="correction-critere" class="badge">…</span></p>
+      <p id="correction-explication">…</p>
+      <p id="correction-nuance" class="nuance" hidden>…</p>
+      <button type="button" class="bouton principal" id="bouton-suivant">Suivant</button>
+    </div>
+  </section>
+
+  <section id="ecran-fin" class="carte-quiz" hidden>
+    <h2>Terminé !</h2>
+    <p class="score-final" id="score-final">0 / 12</p>
+    <p id="message-final">…</p>
+    <h3>Récapitulatif</h3>
+    <ul class="recap" id="recap"></ul>
+    <button type="button" class="bouton principal" id="bouton-recommencer">Recommencer</button>
+  </section>
+
+  <p class="pied"><a href="../index.html">Retour à la présentation</a></p>
+</main>
+</body>
+</html>

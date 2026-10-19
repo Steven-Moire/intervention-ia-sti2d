@@ -1,0 +1,89 @@
+/* commun.css — couleurs, typographie et éléments partagés (présentation + activités). */
+
+:root {
+  /* Fond clair et texte très foncé : c'est ce qui passe le mieux au vidéoprojecteur. */
+  --fond: #ffffff;
+  --fond-doux: #f1f4f9;
+  --texte: #111827;
+  --texte-doux: #374151;
+  --accent: #1d4ed8;
+  --accent-fond: #dbe6ff;
+  --ok: #166534;
+  --ok-fond: #dcfce7;
+  --ko: #9a1c1c;
+  --ko-fond: #fde2e2;
+  --alerte: #92400e;
+  --alerte-fond: #fef3c7;
+  --bordure: #c7cfdb;
+  --rayon: 0.6rem;
+  --police: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --police-mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police);
+  line-height: 1.4;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+a.lien-todo {
+  color: var(--alerte);
+  background: var(--alerte-fond);
+  border-radius: 0.3rem;
+  padding: 0 0.3em;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+a.lien-todo::after {
+  content: " (lien à compléter)";
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.75em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

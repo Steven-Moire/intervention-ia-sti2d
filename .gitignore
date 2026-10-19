@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+
+# Secrets : ne jamais publier
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+.termes-interdits.txt
+
+# Configuration personnelle de l'assistant de l'intervenant : locale, jamais publiée.
+# (Le kit à destination des élèves est dans docs/aller-plus-loin/kit/.)
+.claude/
+CLAUDE.md
+.mcp.json
+docs/rules-ref/
+
+# Exports locaux
+*.pdf
+*.zip
+
+# Systèmes et éditeurs
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/

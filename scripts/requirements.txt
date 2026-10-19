@@ -1,0 +1,3 @@
+# Seule dépendance du projet, utilisée uniquement par scripts/generate_qr.py.
+# check_links.py n'utilise que la bibliothèque standard de Python.
+qrcode==8.2

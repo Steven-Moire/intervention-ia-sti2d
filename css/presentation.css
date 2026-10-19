@@ -1,0 +1,423 @@
+/* presentation.css — diapositives, navigation, notes de l'orateur, impression PDF. */
+
+body {
+  /* Corps de texte : ~17 px sur téléphone, ~34 px sur un projecteur 1920×1080. */
+  font-size: clamp(1.1rem, calc(0.6rem + 1.2vmin + 0.6vw), 2.4rem);
+}
+
+/* ---------- Diapositives ---------- */
+
+.diapo {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 1.2em 1rem 4.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  border-bottom: 2px solid var(--bordure);
+}
+
+/* Sans JavaScript : toutes les diapositives s'affichent les unes sous les autres. */
+body.js .diapo {
+  display: none;
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  border-bottom: 0;
+}
+
+body.js .diapo.active {
+  display: flex;
+}
+
+.diapo > .contenu {
+  width: 100%;
+  max-width: 62em;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.diapo h1,
+.diapo h2,
+.diapo h3 {
+  margin: 0;
+  line-height: 1.15;
+}
+
+.diapo h1 {
+  font-size: 2.1em;
+}
+
+.diapo h2 {
+  font-size: 1.6em;
+  color: var(--accent);
+}
+
+.diapo h3 {
+  font-size: 1.1em;
+}
+
+.diapo p,
+.diapo ul,
+.diapo ol {
+  margin: 0;
+}
+
+.diapo ul,
+.diapo ol {
+  padding-left: 1.2em;
+}
+
+.diapo li + li {
+  margin-top: 0.3em;
+}
+
+.surtitre {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+}
+
+.discret {
+  color: var(--texte-doux);
+  font-size: 0.8em;
+}
+
+.credit {
+  color: var(--texte-doux);
+  font-size: 0.65em;
+}
+
+.grand {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.citation {
+  border-left: 0.3em solid var(--accent);
+  padding: 0.2em 0 0.2em 0.8em;
+  font-style: italic;
+}
+
+/* ---------- Mises en page ---------- */
+
+.colonnes {
+  display: grid;
+  gap: 0.8em;
+  grid-template-columns: 1fr;
+}
+
+.carte {
+  background: var(--fond-doux);
+  border: 2px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 0.6em 0.8em;
+}
+
+.carte h3 {
+  margin-bottom: 0.3em;
+}
+
+.carte.accent {
+  background: var(--accent-fond);
+  border-color: var(--accent);
+}
+
+.carte.ok {
+  background: var(--ok-fond);
+  border-color: var(--ok);
+}
+
+.carte.ko {
+  background: var(--ko-fond);
+  border-color: var(--ko);
+}
+
+.schema {
+  width: 100%;
+  max-height: 52vh;
+  height: auto;
+}
+
+.schema text {
+  font-family: var(--police);
+}
+
+.qr-grille {
+  display: grid;
+  gap: 0.6em;
+  grid-template-columns: repeat(auto-fit, minmax(7.5em, 1fr));
+}
+
+.qr-bloc {
+  text-align: center;
+  font-size: 0.7em;
+}
+
+.qr-bloc img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  max-width: 11em;
+  margin: 0 auto 0.3em;
+  background: #ffffff;
+  border: 2px solid var(--bordure);
+  border-radius: var(--rayon);
+}
+
+.qr-seul img {
+  max-width: 14em;
+}
+
+details.reponse summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+details.reponse[open] summary {
+  margin-bottom: 0.3em;
+}
+
+.etiquette {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0 0.5em;
+  font-size: 0.75em;
+  font-weight: 700;
+  background: var(--accent-fond);
+  color: var(--accent);
+}
+
+@media (min-width: 48em) {
+  .diapo {
+    padding: 1.2em 2rem 3.6em;
+  }
+
+  .colonnes.deux {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .colonnes.trois {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .colonnes.schema-texte {
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+  }
+}
+
+/* ---------- Notes de l'orateur (touche N) ---------- */
+
+.notes {
+  display: none;
+  font-size: 0.6em;
+  background: var(--alerte-fond);
+  border: 2px solid var(--alerte);
+  border-radius: var(--rayon);
+  padding: 0.6em 0.9em;
+  width: 100%;
+  max-width: 62em;
+  margin: 0 auto;
+}
+
+.notes h4 {
+  margin: 0.4em 0 0.2em;
+  color: var(--alerte);
+}
+
+.notes ul {
+  margin: 0;
+}
+
+.notes::before {
+  content: "Notes de l'orateur (touche N pour masquer)";
+  display: block;
+  font-weight: 700;
+  color: var(--alerte);
+}
+
+body.notes-visibles .notes {
+  display: block;
+}
+
+/* Sans JavaScript, les notes restent visibles : le support reste utilisable. */
+body:not(.js) .notes {
+  display: block;
+}
+
+/* ---------- Barre de navigation ---------- */
+
+.navigation {
+  display: none;
+}
+
+body.js .navigation {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem calc(0.35rem + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid var(--bordure);
+  font-size: 1rem;
+}
+
+.navigation button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 2px solid var(--bordure);
+  border-radius: var(--rayon);
+  background: var(--fond);
+  color: var(--texte);
+  font-weight: 700;
+}
+
+.navigation button[aria-pressed="true"] {
+  background: var(--alerte-fond);
+  border-color: var(--alerte);
+}
+
+.navigation .espace {
+  flex: 1;
+}
+
+#compteur {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+#badge-parcours {
+  color: var(--texte-doux);
+  font-size: 0.85rem;
+}
+
+.progression {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.4rem;
+  background: var(--fond-doux);
+  z-index: 11;
+}
+
+body:not(.js) .progression {
+  display: none;
+}
+
+#progression-barre {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+/* ---------- Aide ---------- */
+
+.aide {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgba(17, 24, 39, 0.6);
+  padding: 1rem;
+}
+
+.aide[hidden] {
+  display: none;
+}
+
+.aide .boite {
+  background: var(--fond);
+  border-radius: var(--rayon);
+  padding: 1em 1.4em;
+  max-width: 30em;
+  font-size: 1rem;
+}
+
+.aide kbd {
+  font-family: var(--police-mono);
+  border: 1px solid var(--bordure);
+  border-bottom-width: 3px;
+  border-radius: 0.3rem;
+  padding: 0 0.35em;
+  background: var(--fond-doux);
+}
+
+/* ---------- Impression / export PDF ---------- */
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  body {
+    font-size: 15pt;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .navigation,
+  .progression,
+  .aide {
+    display: none !important;
+  }
+
+  body.js .diapo,
+  .diapo {
+    display: flex !important;
+    position: static;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  body.js .diapo.hors-parcours {
+    display: none !important;
+  }
+
+  .diapo > .contenu {
+    justify-content: flex-start;
+  }
+
+  .schema {
+    max-height: 110mm;
+  }
+
+  .qr-bloc img {
+    max-width: 38mm;
+  }
+
+  /* Notes imprimées seulement si elles étaient affichées (touche N avant Ctrl+P). */
+  body.js:not(.notes-visibles) .notes {
+    display: none !important;
+  }
+
+  .notes {
+    break-inside: avoid;
+    max-width: none;
+  }
+
+  a.lien-todo::after {
+    content: "";
+  }
+}

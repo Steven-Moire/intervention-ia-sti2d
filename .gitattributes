@@ -1,0 +1,4 @@
+# Les scripts shell doivent garder des fins de ligne Unix (LF), même sous Windows :
+# avec des fins de ligne Windows (CRLF), le hook pre-commit ne s'exécute pas.
+docs/aller-plus-loin/kit/hooks/pre-commit text eol=lf
+*.sh text eol=lf

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img">
+  <title>QR code à générer : Activité « IA ou pas IA ? »</title>
+  <rect x="4" y="4" width="192" height="192" rx="12"
+        fill="#fef3c7" stroke="#92400e" stroke-width="4" stroke-dasharray="12 8"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#92400e">
+    <text x="100" y="88" font-size="22" font-weight="700">QR à générer</text>
+    <text x="100" y="118" font-size="14">compléter js/config.js</text>
+    <text x="100" y="140" font-size="14">puis lancer</text>
+    <text x="100" y="160" font-size="13">scripts/generate_qr.py</text>
+  </g>
+</svg>
