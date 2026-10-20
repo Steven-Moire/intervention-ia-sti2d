@@ -1,5 +1,5 @@
 /*
- * quiz.js — logique de l'activité « IA ou pas IA ? ».
+ * quiz.js — logique de l'activité « IA ou pas IA ? ».
  * Tout se passe dans le navigateur : aucun serveur, aucun stockage, aucun envoi.
  */
 (function () {
@@ -88,9 +88,9 @@
       return "Très bien ! Regarde les nuances : certains cas font débat même chez les spécialistes.";
     }
     if (ratio >= 0.5) {
-      return "Pas mal ! Le piège : beaucoup d'objets « automatiques » ne font que suivre des règles écrites à la main.";
+      return "Pas mal ! Le piège : beaucoup d'objets « automatiques » ne font que suivre des règles écrites à la main.";
     }
-    return "C'est normal d'hésiter : le mot « IA » est utilisé partout. Relis les corrections, on en parle ensemble.";
+    return "C'est normal d'hésiter : le mot « IA » est utilisé partout. Relis les corrections, on en parle ensemble.";
   }
 
   function afficherFin() {

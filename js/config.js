@@ -26,7 +26,7 @@ window.LIENS = {
     credit: ""
   },
   "quiz": {
-    label: "Activité « IA ou pas IA ? »",
+    label: "Activité « IA ou pas IA ? »",
     base: "site",
     chemin: "activites/ia-ou-pas-ia.html",
     credit: ""
