@@ -207,6 +207,16 @@ body.js .diapo.active {
   max-width: 14em;
 }
 
+/* QR code seul au centre de la diapositive, lien juste en dessous (scanner ou cliquer). */
+.qr-central {
+  font-size: 1em;
+  margin: 0.4em auto 0;
+}
+
+.qr-central img {
+  max-width: min(12em, 42vh);
+}
+
 details.reponse summary {
   cursor: pointer;
   font-weight: 700;
