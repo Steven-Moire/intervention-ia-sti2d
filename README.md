@@ -73,13 +73,13 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 | Section | 1 h | 2 h |
 |---|---|---|
 | 1. Titre, nuage de mots, mains levées | 7 min | 12 min |
-| 2. Frise « Depuis quand ? », une ou des intelligences (2 h seulement) | 3 min | 15 min |
+| 2. Frise « Depuis quand ? », intelligence, des intelligences (2 h) | 4 min | 15 min |
 | 3. Activité « IA ou pas IA ? » + mise en commun | 12 min | 20 min |
-| 4. IA ⊃ ML ⊃ DL, effet IA, Deep Blue / AlexNet | 8 min | 12 min |
-| 5. Chaîne d'information, maintenance prédictive | 7 min | 12 min |
+| 4. IA ⊃ ML ⊃ DL, effet IA (2 h), Deep Blue / AlexNet | 6 min | 12 min |
+| 5. Chaîne d'information, maintenance prédictive (2 h) | 4 min | 12 min |
 | 6. Modes d'apprentissage | 4 min | 10 min |
 | 7. Démo Teachable Machine | 7 min | 12 min |
-| 8. Neurones et CNN | 5 min | 15 min |
+| 8. Neurone, réseau, CNN | 7 min | 15 min |
 | 9. Enjeux | 4 min | 10 min |
 | 10. Métiers | 2 min | 5 min |
 | 11. Conclusion, questions, ressources | 1 min (+ questions) | 10 min |
