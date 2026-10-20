@@ -207,6 +207,15 @@ body.js .diapo.active {
   max-width: 14em;
 }
 
+/* Lien sous un QR code seul : taille du texte courant (la légende, elle, reste petite). */
+.qr-seul > a {
+  font-size: 1.4em;
+}
+
+.qr-central > a {
+  font-size: 1em;
+}
+
 /* QR code seul au centre de la diapositive, lien juste en dessous (scanner ou cliquer). */
 .qr-central {
   font-size: 1em;
