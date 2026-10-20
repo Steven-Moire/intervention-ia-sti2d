@@ -82,7 +82,7 @@ async function nouvellePage(nav, largeur, hauteur, problemes) {
 async function testerPresentation(nav, largeur, hauteur, police) {
   const problemes = [];
   const { ctx, page } = await nouvellePage(nav, largeur, hauteur, problemes);
-  await page.goto(adresse("index.html"));
+  await page.goto(adresse("index.html", "?parcours=complet")); // parcours complet = toutes les diapositives
   if (police !== 100) {
     await page.addStyleTag({ content: `html { font-size: ${police}% !important; }` });
   }

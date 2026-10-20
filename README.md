@@ -63,8 +63,9 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 | Aide | `A` ou `?` | bouton **?** |
 
 - **Deux adresses** : l'adresse normale pour projeter devant la classe, et la même suivie de `?admin` pour l'intervenant. Le bouton et la touche **N** (notes) n'existent qu'avec `?admin` : impossible d'afficher les notes par erreur devant les élèves. Ce n'est pas un secret (les notes sont dans le code de la page), seulement une protection contre le clic malheureux.
-- Le bouton **2 h** / **1 h** masque ou réaffiche les diapositives facultatives (marquées `data-parcours="2h"`). L'adresse affiche toujours le parcours (`?parcours=1h` ou `?parcours=2h`) et le garde en cas de rechargement.
-- Ajouter un parcours (par exemple 3 h) : ajouter `"3h"` à la liste `PARCOURS` en haut de `js/presentation.js`, puis marquer ses diapositives `data-parcours="3h"`. Une diapositive apparaît dans son parcours et dans tous les plus longs.
+- Le bouton **2 h** / **1 h** masque ou réaffiche les diapositives facultatives (marquées `data-parcours="2h"`). L'adresse affiche toujours le parcours (`?parcours=1h`, `?parcours=2h` ou `?parcours=complet`) et le garde en cas de rechargement.
+- **Parcours complet** (`?parcours=complet`) : pour les élèves, en autonomie et facultatif. Il ajoute 4 diapositives marquées `data-parcours="complet"` et rédigées pour être lues seules. On y entre par le lien et le QR code de la dernière diapositive, pas par le bouton ; le bouton ou la flèche « retour » du navigateur ramènent au parcours de la présentation.
+- Ajouter un parcours : l'ajouter à la liste `PARCOURS` en haut de `js/presentation.js` (et à `PARCOURS_BOUTON` s'il doit être proposé par le bouton), puis marquer ses diapositives. Une diapositive apparaît dans son parcours et dans tous les plus longs.
 - `index.html#12` ouvre directement la diapositive 12.
 - Chaque note contient une **« Version tableau »** : quoi dessiner si le projecteur ou le réseau lâche.
 
@@ -84,7 +85,7 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 | 10. Métiers | 2 min | 5 min |
 | 11. Conclusion, questions, ressources | 1 min (+ questions) | 9 min |
 
-Au-delà de 2 h, pas de parcours plus long : les élèves explorent en autonomie avec les ressources de fin et les fiches « Pour aller plus loin ».
+Au-delà de 2 h, les élèves continuent en autonomie avec le **parcours complet** (annoncé sur la dernière diapositive), les ressources de fin et les fiches « Pour aller plus loin ».
 
 Chaque section est un bloc `<section class="diapo" data-section="N">` réutilisable : on peut en déplacer, en supprimer ou en dupliquer sans toucher au JavaScript.
 

@@ -31,6 +31,12 @@ window.LIENS = {
     chemin: "activites/ia-ou-pas-ia.html",
     credit: ""
   },
+  "parcours-complet": {
+    label: "Parcours complet de la présentation (en autonomie)",
+    base: "site",
+    chemin: "?parcours=complet",
+    credit: ""
+  },
   "aller-plus-loin": {
     label: "Pour aller plus loin (facultatif)",
     base: "depot",

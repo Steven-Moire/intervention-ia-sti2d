@@ -405,6 +405,13 @@ body:not(.admin) .admin-seulement {
   display: none;
 }
 
+/* Parcours complet (autonomie) : message d'accueil et lien retour seulement dedans,
+   accès au parcours complet seulement en dehors. */
+body:not([data-parcours="complet"]) .seulement-complet,
+body[data-parcours="complet"] .sauf-complet {
+  display: none;
+}
+
 .progression {
   position: fixed;
   top: 0;

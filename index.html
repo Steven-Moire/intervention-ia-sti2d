@@ -28,6 +28,7 @@
     <h1>L'intelligence artificielle,<br>comment ça marche (vraiment) ?</h1>
     <p class="grand"><span data-config="intervenant">Steven-Moire</span></p>
     <p data-config="role">Ingénieur en intelligence artificielle, ancien enseignant</p>
+    <p class="carte accent seulement-complet">Parcours complet, à suivre seul : avance à ton rythme avec les flèches. Les diapositives «&nbsp;Parcours complet&nbsp;» vont plus loin que la présentation en classe.</p>
   </div>
   <div class="notes" role="note">
     <ul>
@@ -343,6 +344,29 @@
   </div>
 </section>
 
+<section class="diapo" id="effet-ia" data-section="4" data-parcours="complet" aria-label="L'effet IA">
+  <div class="contenu">
+    <p class="surtitre">Parcours complet · Un phénomène curieux</p>
+    <h2>L'«&nbsp;effet IA&nbsp;»</h2>
+    <p class="citation grand">Dès qu'une machine sait le faire, on dit que «&nbsp;ce n'est pas vraiment de l'intelligence&nbsp;».</p>
+    <div class="colonnes trois">
+      <div class="carte"><h3>Hier «&nbsp;IA&nbsp;»</h3><p>Jouer aux échecs, calculer un itinéraire, lire un texte scanné.</p></div>
+      <div class="carte"><h3>Aujourd'hui</h3><p>«&nbsp;C'est juste un programme.&nbsp;»</p></div>
+      <div class="carte accent"><h3>Conséquence</h3><p>Le mot «&nbsp;IA&nbsp;» désigne souvent… ce qui est encore nouveau.</p></div>
+    </div>
+    <p class="discret">Formule attribuée à l'informaticien Larry Tesler : «&nbsp;l'IA, c'est tout ce qui n'a pas encore été fait&nbsp;». Réflexe face à une publicité «&nbsp;avec IA&nbsp;» : qu'est-ce qui est appris, et à partir de quelles données&nbsp;?</p>
+  </div>
+  <div class="notes" role="note">
+    <ul>
+      <li>Idée souvent résumée par la formule attribuée à Larry Tesler : «&nbsp;l'IA, c'est tout ce qui n'a pas encore été fait&nbsp;».</li>
+      <li>Lien avec le marketing : aujourd'hui, on colle «&nbsp;IA&nbsp;» sur beaucoup de produits. Réflexe à avoir : «&nbsp;qu'est-ce qui est appris, et à partir de quelles données ?&nbsp;»</li>
+      <li>Parcours complet, en autonomie : la diapositive se lit seule.</li>
+    </ul>
+    <h4>Version tableau</h4>
+    <p>Une flèche du temps. À gauche «&nbsp;1960–1990 : IA = échecs, itinéraires&nbsp;». À droite «&nbsp;aujourd'hui : simple programme&nbsp;». Au-dessus : «&nbsp;l'IA, c'est ce qui n'est pas encore banal&nbsp;».</p>
+  </div>
+</section>
+
 <!-- ===================================================== 5. CHAÎNE D'INFORMATION ===================================================== -->
 <section class="diapo" id="chaine-information" data-section="5" aria-label="Le machine learning dans la chaîne d'information">
   <div class="contenu">
@@ -378,6 +402,40 @@
     </ul>
     <h4>Version tableau</h4>
     <p>Trois rectangles reliés par des flèches : ACQUÉRIR (capteur) → TRAITER (modèle) → COMMUNIQUER (alerte). Colorier ou entourer «&nbsp;TRAITER&nbsp;» : c'est là que se place le ML.</p>
+  </div>
+</section>
+
+<section class="diapo" id="ia-embarquee" data-section="5" data-parcours="complet" aria-label="L'IA embarquée dans un projet SIN">
+  <div class="contenu">
+    <p class="surtitre">Parcours complet · Côté projet</p>
+    <h2>L'IA dans ton projet SIN</h2>
+    <p>Un modèle n'a pas toujours besoin d'un gros serveur : un <strong>petit modèle</strong> peut tourner directement sur un microcontrôleur. On parle d'<strong>IA embarquée</strong>.</p>
+    <div class="colonnes deux">
+      <div class="carte">
+        <h3>Exemples</h3>
+        <ul>
+          <li>repérer une vibration anormale sur un moteur ;</li>
+          <li>reconnaître un mot-clé prononcé («&nbsp;allume&nbsp;», «&nbsp;stop&nbsp;») ;</li>
+          <li>compter des objets avec une petite caméra.</li>
+        </ul>
+      </div>
+      <div class="carte accent">
+        <h3>Avantages et limites</h3>
+        <ul>
+          <li><strong>+</strong> réponse rapide, marche sans réseau, les données restent sur place ;</li>
+          <li><strong>−</strong> peu de mémoire et de calcul : le modèle doit rester petit, donc moins précis.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="discret">Pour essayer : cherche «&nbsp;TinyML&nbsp;» ou «&nbsp;IA embarquée&nbsp;» avec le nom de ta carte (Arduino, ESP32, Raspberry Pi Pico…). Les outils changent vite : vérifie toujours la documentation à jour.</p>
+  </div>
+  <div class="notes" role="note">
+    <ul>
+      <li>Parcours complet, en autonomie : la diapositive se lit seule.</li>
+      <li>Même chaîne d'information que la diapositive précédente : seul le bloc «&nbsp;Traiter&nbsp;» change de place (sur la carte au lieu d'un serveur).</li>
+    </ul>
+    <h4>Version tableau</h4>
+    <p>Reprendre ACQUÉRIR → TRAITER → COMMUNIQUER et dessiner un microcontrôleur autour de TRAITER. Écrire à côté : «&nbsp;+ rapide, sans réseau&nbsp;» et «&nbsp;− modèle petit&nbsp;».</p>
   </div>
 </section>
 
@@ -514,6 +572,32 @@
     </ul>
     <h4>Version tableau</h4>
     <p>Dessiner 3 boîtes : «&nbsp;Exemples (photos)&nbsp;» → «&nbsp;Entraînement&nbsp;» → «&nbsp;Modèle&nbsp;» → «&nbsp;Prédiction : poing 92 %&nbsp;». Puis l'expérience de pensée : «&nbsp;si toutes les photos de poing sont prises devant un mur rouge, que va apprendre le modèle ?&nbsp;»</p>
+  </div>
+</section>
+
+<section class="diapo" id="surapprentissage" data-section="7" data-parcours="complet" aria-label="Apprendre n'est pas apprendre par cœur">
+  <div class="contenu">
+    <p class="surtitre">Parcours complet · Bien entraîner</p>
+    <h2>Apprendre ≠ apprendre par cœur</h2>
+    <div class="colonnes deux">
+      <div class="carte">
+        <h3>Entraînement et test</h3>
+        <p>On met de côté une partie des exemples. Le modèle apprend sur les autres, puis on le teste sur ceux qu'il <strong>n'a jamais vus</strong>. C'est la seule façon de savoir s'il a vraiment appris.</p>
+      </div>
+      <div class="carte accent">
+        <h3>Le surapprentissage</h3>
+        <p>Un modèle qui a «&nbsp;appris par cœur&nbsp;» ses exemples réussit l'entraînement… et se trompe sur un cas nouveau. Comme réciter un corrigé sans l'avoir compris.</p>
+      </div>
+    </div>
+    <p>Essaie toi-même : dans <a data-lien="teachable-machine" href="#">Teachable Machine</a>, entraîne un modèle toujours devant le même fond, puis teste-le devant un autre mur ou avec une autre lumière.</p>
+  </div>
+  <div class="notes" role="note">
+    <ul>
+      <li>Parcours complet, en autonomie : la diapositive se lit seule.</li>
+      <li>Vocabulaire : jeu d'entraînement, jeu de test, surapprentissage («&nbsp;overfitting&nbsp;»). Remède : plus d'exemples, plus variés.</li>
+    </ul>
+    <h4>Version tableau</h4>
+    <p>Deux tas de cartes : «&nbsp;entraînement&nbsp;» (80&nbsp;%) et «&nbsp;test&nbsp;» (20&nbsp;%). Dessiner deux courbes : l'erreur d'entraînement qui descend toujours, l'erreur de test qui remonte quand le modèle apprend par cœur.</p>
   </div>
 </section>
 
@@ -701,6 +785,29 @@
     </ul>
     <h4>Version tableau</h4>
     <p>Écrire «&nbsp;Le chat dort sur le …&nbsp;». Demander trois mots à la salle, faire voter, noter un pourcentage à côté de chacun. Conclure : «&nbsp;le modèle fait ça, mot après mot, des milliers de fois&nbsp;».</p>
+  </div>
+</section>
+
+<section class="diapo" id="bien-utiliser" data-section="8" data-parcours="complet" aria-label="Bien utiliser un assistant IA">
+  <div class="contenu">
+    <p class="surtitre">Parcours complet · Au quotidien</p>
+    <h2>Bien utiliser un assistant IA</h2>
+    <ul>
+      <li><strong>Vérifie</strong> : recoupe avec une source fiable (manuel, site officiel, ton professeur).</li>
+      <li><strong>Protège</strong> : ne lui confie pas de données personnelles, les tiennes ou celles des autres.</li>
+      <li><strong>Sois honnête</strong> : dis quand tu l'as utilisé, et respecte les règles de ton lycée pour les devoirs.</li>
+      <li><strong>Apprends</strong> : demande-lui d'expliquer ou de donner un exemple, pas de faire à ta place.</li>
+    </ul>
+    <p class="carte accent">Règle d'or : <strong>tu restes responsable</strong> de ce que tu rends, même si un assistant t'a aidé.</p>
+    <p class="discret">Chaque assistant a ses conditions d'utilisation et d'âge. Pour les élèves qui codent : fiche «&nbsp;Bonnes pratiques&nbsp;» dans le support <a data-lien="aller-plus-loin" data-secours="docs/aller-plus-loin/README.md" href="docs/aller-plus-loin/README.md">pour aller plus loin</a>.</p>
+  </div>
+  <div class="notes" role="note">
+    <ul>
+      <li>Parcours complet, en autonomie : la diapositive se lit seule.</li>
+      <li>Suite directe de «&nbsp;plausible ne veut pas dire vrai&nbsp;» : ces quatre réflexes en découlent.</li>
+    </ul>
+    <h4>Version tableau</h4>
+    <p>Quatre verbes en colonne : VÉRIFIER, PROTÉGER, ÊTRE HONNÊTE, APPRENDRE. En dessous, encadré : «&nbsp;je reste responsable&nbsp;».</p>
   </div>
 </section>
 
@@ -917,12 +1024,18 @@
         <img src="assets/qr/site.svg" alt="QR code vers cette présentation en ligne" width="160" height="160">
         <a data-lien="site" href="#">Cette présentation</a>
       </div>
+      <div class="qr-bloc sauf-complet">
+        <img src="assets/qr/parcours-complet.svg" alt="QR code vers le parcours complet de la présentation" width="160" height="160">
+        <a href="?parcours=complet#1">Parcours complet</a><br><span class="credit">en autonomie, facultatif</span>
+      </div>
     </div>
+    <p class="seulement-complet">Tu as fini le parcours complet. <a href="?parcours=2h#1">Revenir au parcours de la présentation</a></p>
     <p class="discret">Pour aller plus loin, à ton rythme et seulement si tu en as envie : un support facultatif est dans le dossier <a data-lien="aller-plus-loin" data-secours="docs/aller-plus-loin/README.md" href="docs/aller-plus-loin/README.md">docs/aller-plus-loin</a> du dépôt.</p>
   </div>
   <div class="notes" role="note">
     <ul>
       <li>Laisser cette diapositive affichée pendant les questions et la sortie : les élèves photographient les QR codes.</li>
+      <li>Annoncer le <strong>parcours complet</strong> : facultatif, à suivre seul (QR code ou lien «&nbsp;Parcours complet&nbsp;»), avec 4 diapositives qui vont plus loin que la séance.</li>
       <li>Le support «&nbsp;pour aller plus loin&nbsp;» n'est pas présenté en séance. Le mentionner en une phrase.</li>
       <li>Avant chaque site, rappeler : chaque service a ses conditions d'utilisation et d'âge.</li>
     </ul>

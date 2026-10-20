@@ -7,8 +7,9 @@
  * Boutons : parcours 1 h / 2 h, thème, aide (+ notes en mode intervenant)
  * Tactile : balayage gauche/droite
  * URL     : #12 ouvre la diapositive 12 ; ?admin = mode intervenant (bouton N) ;
- *           ?parcours=1h|2h (toujours présent dans l'adresse) et ?theme=clair|sombre
- *           fixent le réglage au chargement
+ *           ?parcours=1h|2h|complet (toujours présent dans l'adresse) et ?theme=clair|sombre
+ *           fixent le réglage au chargement. Le parcours complet (autonomie) s'ouvre par un
+ *           lien de la dernière diapositive, pas par le bouton.
  */
 (function () {
   "use strict";
@@ -18,9 +19,11 @@
   var courante = 0;
   // Parcours du plus court au plus long. Une diapositive data-parcours="2h" apparaît
   // dans le parcours 2 h et dans tous les plus longs ; sans data-parcours, partout.
-  // Pour un parcours 3 h : ajouter "3h" ici et marquer ses diapositives data-parcours="3h".
-  var PARCOURS = ["1h", "2h"];
-  var PARCOURS_PAR_DEFAUT = PARCOURS[PARCOURS.length - 1];
+  // Pour un nouveau parcours : l'ajouter ici et marquer ses diapositives data-parcours="…".
+  var PARCOURS = ["1h", "2h", "complet"];
+  // Parcours proposés par le bouton (ceux qu'on présente en classe).
+  var PARCOURS_BOUTON = ["1h", "2h"];
+  var PARCOURS_PAR_DEFAUT = "2h";
   var parcoursActuel = PARCOURS_PAR_DEFAUT;
 
   function estAdmin() {
@@ -33,11 +36,13 @@
   }
 
   function libelle(parcours) {
-    return parcours.replace("h", " h"); // « 2h » → « 2 h »
+    return parcours.replace(/^(\d+)h$/, "$1 h"); // « 2h » → « 2 h », « complet » inchangé
   }
 
+  // Depuis le parcours complet, le bouton ramène au parcours par défaut.
   function parcoursSuivant(parcours) {
-    return PARCOURS[(PARCOURS.indexOf(parcours) + 1) % PARCOURS.length];
+    var position = PARCOURS_BOUTON.indexOf(parcours);
+    return position === -1 ? PARCOURS_PAR_DEFAUT : PARCOURS_BOUTON[(position + 1) % PARCOURS_BOUTON.length];
   }
 
   function estHorsParcours(diapo, parcours) {
@@ -62,6 +67,7 @@
     diapos = toutes.filter(function (d) {
       return !d.classList.contains("hors-parcours");
     });
+    document.body.setAttribute("data-parcours", parcours); // pour .seulement-complet / .sauf-complet
     var duree = document.getElementById("parcours-duree");
     if (duree) {
       duree.textContent = libelle(parcours);
