@@ -42,6 +42,11 @@ body.js .diapo.active {
   gap: 0.6em;
 }
 
+/* Diapositive de titre : bloc centré. */
+.diapo > .contenu.centre {
+  text-align: center;
+}
+
 .diapo h1,
 .diapo h2,
 .diapo h3 {
@@ -323,11 +328,51 @@ body.js .navigation {
 #compteur {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
+  white-space: nowrap;
 }
 
-#badge-parcours {
-  color: var(--texte-doux);
-  font-size: 0.85rem;
+#bouton-parcours {
+  padding: 0 0.6em;
+  white-space: nowrap;
+}
+
+/* Petits téléphones : barre resserrée pour que tous les boutons tiennent. */
+@media (max-width: 24em) {
+  body.js .navigation {
+    gap: 0.25rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+
+  .navigation button {
+    min-width: 2.5rem;
+  }
+}
+
+.large-seulement {
+  display: none;
+}
+
+@media (min-width: 48em) {
+  .large-seulement {
+    display: inline;
+  }
+}
+
+/* Bouton thème : une seule icône visible, celle du thème vers lequel il bascule. */
+#bouton-theme .icone {
+  display: block;
+  margin: auto;
+}
+
+#bouton-theme[data-icone="lune"] .icone-soleil,
+#bouton-theme[data-icone="soleil"] .icone-lune {
+  display: none;
+}
+
+/* Lignes d'aide réservées au mode intervenant (?admin). */
+body:not(.admin) .admin-seulement {
+  display: none;
 }
 
 .progression {

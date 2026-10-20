@@ -56,12 +56,15 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 | Diapositive suivante | `→` `↓` `Espace` `Page suiv.` | balayer vers la gauche |
 | Diapositive précédente | `←` `↑` `Page préc.` | balayer vers la droite |
 | Première / dernière | `Début` / `Fin` | — |
-| Notes de l'orateur | `N` | bouton **N** |
+| Parcours 1 h / 2 h | — | bouton **2 h** / **1 h** |
+| Thème clair / sombre | `S` | bouton lune / soleil |
+| Notes de l'orateur (mode intervenant) | `N` | bouton **N** |
 | Plein écran | `F` | — |
 | Aide | `A` ou `?` | bouton **?** |
 
+- **Deux adresses** : l'adresse normale pour projeter devant la classe, et la même suivie de `?admin` pour l'intervenant. Le bouton et la touche **N** (notes) n'existent qu'avec `?admin` : impossible d'afficher les notes par erreur devant les élèves. Ce n'est pas un secret (les notes sont dans le code de la page), seulement une protection contre le clic malheureux.
+- Le bouton **2 h** / **1 h** masque ou réaffiche les diapositives facultatives (marquées `data-parcours="2h"`). L'adresse garde le choix (`?parcours=1h`) en cas de rechargement.
 - `index.html#12` ouvre directement la diapositive 12.
-- `index.html?parcours=1h` masque les diapositives facultatives (marquées `data-parcours="2h"`).
 - Chaque note contient une **« Version tableau »** : quoi dessiner si le projecteur ou le réseau lâche.
 
 ### Parcours conseillés
@@ -134,10 +137,10 @@ Le fichier `.nojekyll` demande à GitHub Pages de servir les fichiers tels quels
 ## Exporter en PDF
 
 1. Ouvrir `index.html` dans Chrome, Edge ou Firefox.
-2. Optionnel : appuyer sur `N` pour **inclure les notes de l'orateur** dans le PDF.
+2. Optionnel : ouvrir l'adresse avec `?admin` et appuyer sur `N` pour **inclure les notes de l'orateur** dans le PDF.
 3. `Ctrl` + `P` → **Enregistrer au format PDF**, orientation **Paysage**, cocher **Graphiques d'arrière-plan**.
 
-Une diapositive par page. Les boutons et la barre de progression disparaissent, les réponses repliées sont dépliées. Avec `?parcours=1h` dans l'adresse, seules les diapositives du parcours court sont imprimées.
+Une diapositive par page. Les boutons et la barre de progression disparaissent, les réponses repliées sont dépliées. En parcours 1 h (bouton **1 h**), seules les diapositives du parcours court sont imprimées.
 
 ## Crédits et licences
 

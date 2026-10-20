@@ -23,12 +23,11 @@
 
 <!-- ===================================================== 1. TITRE ===================================================== -->
 <section class="diapo" id="titre" data-section="1" aria-label="Titre">
-  <div class="contenu">
+  <div class="contenu centre">
     <p class="surtitre">1re STI2D · Terminale SIN</p>
     <h1>L'intelligence artificielle,<br>comment ça marche (vraiment) ?</h1>
     <p class="grand"><span data-config="intervenant">Steven-Moire</span></p>
     <p data-config="role">Ingénieur en intelligence artificielle, ancien enseignant</p>
-    <p class="discret">Flèches ou balayage pour avancer · touche A pour l'aide</p>
   </div>
   <div class="notes" role="note">
     <ul>
@@ -869,9 +868,12 @@
   <button type="button" id="bouton-suivant" aria-label="Diapositive suivante">&rarr;</button>
   <span id="compteur" aria-live="polite">1 / 1</span>
   <span class="espace"></span>
-  <span id="badge-parcours"></span>
-  <button type="button" id="bouton-theme" aria-label="Changer de thème (clair ou sombre)">&#x263E;&#xFE0E;</button>
-  <button type="button" id="bouton-notes" aria-pressed="false" aria-label="Afficher ou masquer les notes de l'orateur">N</button>
+  <button type="button" id="bouton-parcours" aria-label="Changer de parcours (1 h ou 2 h)"><span class="large-seulement">Parcours </span><span id="parcours-duree">2 h</span></button>
+  <button type="button" id="bouton-theme" data-icone="lune" aria-label="Changer de thème (clair ou sombre)">
+    <svg class="icone icone-lune" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z" fill="currentColor"/></svg>
+    <svg class="icone icone-soleil" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="4.6" fill="currentColor"/><path d="M12 1.6v3M12 19.4v3M1.6 12h3M19.4 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <button type="button" id="bouton-notes" hidden aria-pressed="false" aria-label="Afficher ou masquer les notes de l'orateur">N</button>
   <button type="button" id="bouton-aide" aria-label="Aide">?</button>
 </nav>
 
@@ -882,12 +884,11 @@
       <li><kbd>&rarr;</kbd> <kbd>Espace</kbd> <kbd>Page suiv.</kbd> : diapositive suivante</li>
       <li><kbd>&larr;</kbd> <kbd>Page préc.</kbd> : diapositive précédente</li>
       <li><kbd>Début</kbd> / <kbd>Fin</kbd> : première / dernière diapositive</li>
-      <li><kbd>N</kbd> : notes de l'orateur (et version tableau)</li>
+      <li class="admin-seulement"><kbd>N</kbd> : notes de l'orateur (et version tableau)</li>
       <li><kbd>F</kbd> : plein écran</li>
-      <li><kbd>S</kbd> : thème clair / sombre (ou <code>?theme=sombre</code> dans l'adresse)</li>
+      <li><kbd>S</kbd> : thème clair / sombre</li>
       <li><kbd>Ctrl</kbd> + <kbd>P</kbd> : imprimer / exporter en PDF</li>
       <li>Sur téléphone : balayer vers la gauche ou la droite</li>
-      <li>Parcours court : ajouter <code>?parcours=1h</code> à l'adresse</li>
     </ul>
     <button type="button" id="aide-fermer">Fermer</button>
   </div>

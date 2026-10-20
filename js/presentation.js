@@ -2,10 +2,12 @@
  * presentation.js — navigation de la présentation, sans dépendance.
  *
  * Clavier : flèches, Page préc./suiv., Espace, Début/Fin
- *           N = notes de l'orateur, F = plein écran, A ou ? = aide, S = thème clair/sombre
+ *           F = plein écran, A ou ? = aide, S = thème clair/sombre
+ *           N = notes de l'orateur, seulement en mode intervenant (?admin)
+ * Boutons : parcours 1 h / 2 h, thème, aide (+ notes en mode intervenant)
  * Tactile : balayage gauche/droite
- * URL     : #12 ouvre la diapositive 12 ; ?parcours=1h masque les diapositives « 2h » ;
- *           ?theme=clair ou ?theme=sombre force le thème (sinon : réglage du système)
+ * URL     : #12 ouvre la diapositive 12 ; ?admin = mode intervenant (bouton N) ;
+ *           ?parcours=1h et ?theme=clair|sombre fixent le réglage au chargement
  */
 (function () {
   "use strict";
@@ -13,25 +15,69 @@
   var SEUIL_SWIPE = 50; // px horizontaux minimum pour un balayage
   var diapos = [];
   var courante = 0;
+  var parcoursActuel = "2h";
+
+  function estAdmin() {
+    return new URLSearchParams(window.location.search).has("admin");
+  }
 
   function lireParcours() {
     var params = new URLSearchParams(window.location.search);
     return params.get("parcours") === "1h" ? "1h" : "2h";
   }
 
+  function toutesLesDiapos() {
+    return Array.prototype.slice.call(document.querySelectorAll(".diapo"));
+  }
+
   function preparerParcours(parcours) {
-    var toutes = Array.prototype.slice.call(document.querySelectorAll(".diapo"));
+    parcoursActuel = parcours;
+    var toutes = toutesLesDiapos();
     toutes.forEach(function (d) {
       var horsParcours = parcours === "1h" && d.getAttribute("data-parcours") === "2h";
       d.classList.toggle("hors-parcours", horsParcours);
+      if (horsParcours) {
+        d.classList.remove("active");
+      }
     });
     diapos = toutes.filter(function (d) {
       return !d.classList.contains("hors-parcours");
     });
-    var badge = document.getElementById("badge-parcours");
-    if (badge) {
-      badge.textContent = parcours === "1h" ? "Parcours 1 h" : "Parcours 2 h";
+    var duree = document.getElementById("parcours-duree");
+    if (duree) {
+      duree.textContent = parcours === "1h" ? "1 h" : "2 h";
     }
+    var bouton = document.getElementById("bouton-parcours");
+    if (bouton) {
+      bouton.setAttribute("aria-label", parcours === "1h"
+        ? "Parcours 1 h : passer au parcours 2 h"
+        : "Parcours 2 h : passer au parcours 1 h");
+    }
+  }
+
+  // Garde l'adresse à jour, pour qu'un rechargement reste sur le même parcours.
+  function memoriserParcoursDansAdresse(parcours) {
+    var params = new URLSearchParams(window.location.search);
+    if (parcours === "1h") {
+      params.set("parcours", "1h");
+    } else {
+      params.delete("parcours");
+    }
+    var requete = params.toString().replace(/=(?=&|$)/g, ""); // « ?admin » plutôt que « ?admin= »
+    history.replaceState(null, "", window.location.pathname + (requete ? "?" + requete : "") + window.location.hash);
+  }
+
+  function basculerParcours() {
+    var actuelle = diapos[courante];
+    preparerParcours(parcoursActuel === "1h" ? "2h" : "1h");
+    // Si la diapositive affichée devient facultative, on recule jusqu'à la précédente du parcours.
+    var toutes = toutesLesDiapos();
+    var position = toutes.indexOf(actuelle);
+    while (position > 0 && toutes[position].classList.contains("hors-parcours")) {
+      position--;
+    }
+    memoriserParcoursDansAdresse(parcoursActuel);
+    afficher(diapos.indexOf(toutes[position]));
   }
 
   function lireTheme() {
@@ -56,7 +102,7 @@
     var bouton = document.getElementById("bouton-theme");
     if (bouton) {
       var sombre = themeActuel() === "sombre";
-      bouton.textContent = sombre ? "☀︎" : "☾︎";
+      bouton.setAttribute("data-icone", sombre ? "soleil" : "lune");
       bouton.setAttribute("aria-label", sombre ? "Passer en thème clair" : "Passer en thème sombre");
     }
   }
@@ -110,6 +156,9 @@
   }
 
   function basculerNotes() {
+    if (!document.body.classList.contains("admin")) {
+      return; // notes réservées au mode intervenant : pas d'affichage par erreur devant la classe
+    }
     var visibles = document.body.classList.toggle("notes-visibles");
     var bouton = document.getElementById("bouton-notes");
     if (bouton) {
@@ -206,6 +255,7 @@
       "bouton-precedent": precedente,
       "bouton-suivant": suivante,
       "bouton-notes": basculerNotes,
+      "bouton-parcours": basculerParcours,
       "bouton-theme": basculerTheme,
       "bouton-aide": basculerAide,
       "aide-fermer": basculerAide
@@ -220,6 +270,13 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("js");
+    if (estAdmin()) {
+      document.body.classList.add("admin");
+      var boutonNotes = document.getElementById("bouton-notes");
+      if (boutonNotes) {
+        boutonNotes.hidden = false;
+      }
+    }
     preparerParcours(lireParcours());
     appliquerTheme(lireTheme());
     brancherBoutons();
