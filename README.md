@@ -72,8 +72,8 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 
 | Section | 1 h | 2 h |
 |---|---|---|
-| 1. Titre, question d'ouverture | 5 min | 10 min |
-| 2. Origines du mot, intelligence | 5 min | 10 min |
+| 1. Titre, nuage de mots, mains levées | 7 min | 12 min |
+| 2. Frise « Depuis quand ? », intelligence (2 h seulement) | 3 min | 10 min |
 | 3. Activité « IA ou pas IA ? » + mise en commun | 12 min | 20 min |
 | 4. IA ⊃ ML ⊃ DL, effet IA, Deep Blue / AlexNet | 8 min | 12 min |
 | 5. Chaîne d'information, maintenance prédictive | 7 min | 12 min |

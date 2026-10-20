@@ -82,6 +82,12 @@ body.js .diapo.active {
   margin-top: 0.3em;
 }
 
+/* Surtitre et titre centrés sur toutes les diapositives ; le contenu reste aligné à gauche. */
+.diapo > .contenu > .surtitre,
+.diapo > .contenu > h2 {
+  text-align: center;
+}
+
 .surtitre {
   font-size: 0.75em;
   font-weight: 700;
