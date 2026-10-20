@@ -63,7 +63,8 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 | Aide | `A` ou `?` | bouton **?** |
 
 - **Deux adresses** : l'adresse normale pour projeter devant la classe, et la même suivie de `?admin` pour l'intervenant. Le bouton et la touche **N** (notes) n'existent qu'avec `?admin` : impossible d'afficher les notes par erreur devant les élèves. Ce n'est pas un secret (les notes sont dans le code de la page), seulement une protection contre le clic malheureux.
-- Le bouton **2 h** / **1 h** masque ou réaffiche les diapositives facultatives (marquées `data-parcours="2h"`). L'adresse garde le choix (`?parcours=1h`) en cas de rechargement.
+- Le bouton **2 h** / **1 h** masque ou réaffiche les diapositives facultatives (marquées `data-parcours="2h"`). L'adresse affiche toujours le parcours (`?parcours=1h` ou `?parcours=2h`) et le garde en cas de rechargement.
+- Ajouter un parcours (par exemple 3 h) : ajouter `"3h"` à la liste `PARCOURS` en haut de `js/presentation.js`, puis marquer ses diapositives `data-parcours="3h"`. Une diapositive apparaît dans son parcours et dans tous les plus longs.
 - `index.html#12` ouvre directement la diapositive 12.
 - Chaque note contient une **« Version tableau »** : quoi dessiner si le projecteur ou le réseau lâche.
 

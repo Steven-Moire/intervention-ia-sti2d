@@ -7,7 +7,8 @@
  * Boutons : parcours 1 h / 2 h, thème, aide (+ notes en mode intervenant)
  * Tactile : balayage gauche/droite
  * URL     : #12 ouvre la diapositive 12 ; ?admin = mode intervenant (bouton N) ;
- *           ?parcours=1h et ?theme=clair|sombre fixent le réglage au chargement
+ *           ?parcours=1h|2h (toujours présent dans l'adresse) et ?theme=clair|sombre
+ *           fixent le réglage au chargement
  */
 (function () {
   "use strict";
@@ -15,15 +16,33 @@
   var SEUIL_SWIPE = 50; // px horizontaux minimum pour un balayage
   var diapos = [];
   var courante = 0;
-  var parcoursActuel = "2h";
+  // Parcours du plus court au plus long. Une diapositive data-parcours="2h" apparaît
+  // dans le parcours 2 h et dans tous les plus longs ; sans data-parcours, partout.
+  // Pour un parcours 3 h : ajouter "3h" ici et marquer ses diapositives data-parcours="3h".
+  var PARCOURS = ["1h", "2h"];
+  var PARCOURS_PAR_DEFAUT = PARCOURS[PARCOURS.length - 1];
+  var parcoursActuel = PARCOURS_PAR_DEFAUT;
 
   function estAdmin() {
     return new URLSearchParams(window.location.search).has("admin");
   }
 
   function lireParcours() {
-    var params = new URLSearchParams(window.location.search);
-    return params.get("parcours") === "1h" ? "1h" : "2h";
+    var demande = new URLSearchParams(window.location.search).get("parcours");
+    return PARCOURS.indexOf(demande) === -1 ? PARCOURS_PAR_DEFAUT : demande;
+  }
+
+  function libelle(parcours) {
+    return parcours.replace("h", " h"); // « 2h » → « 2 h »
+  }
+
+  function parcoursSuivant(parcours) {
+    return PARCOURS[(PARCOURS.indexOf(parcours) + 1) % PARCOURS.length];
+  }
+
+  function estHorsParcours(diapo, parcours) {
+    var minimum = diapo.getAttribute("data-parcours");
+    return minimum !== null && PARCOURS.indexOf(minimum) > PARCOURS.indexOf(parcours);
   }
 
   function toutesLesDiapos() {
@@ -34,7 +53,7 @@
     parcoursActuel = parcours;
     var toutes = toutesLesDiapos();
     toutes.forEach(function (d) {
-      var horsParcours = parcours === "1h" && d.getAttribute("data-parcours") === "2h";
+      var horsParcours = estHorsParcours(d, parcours);
       d.classList.toggle("hors-parcours", horsParcours);
       if (horsParcours) {
         d.classList.remove("active");
@@ -45,31 +64,27 @@
     });
     var duree = document.getElementById("parcours-duree");
     if (duree) {
-      duree.textContent = parcours === "1h" ? "1 h" : "2 h";
+      duree.textContent = libelle(parcours);
     }
     var bouton = document.getElementById("bouton-parcours");
     if (bouton) {
-      bouton.setAttribute("aria-label", parcours === "1h"
-        ? "Parcours 1 h : passer au parcours 2 h"
-        : "Parcours 2 h : passer au parcours 1 h");
+      bouton.setAttribute("aria-label",
+        "Parcours " + libelle(parcours) + " : passer au parcours " + libelle(parcoursSuivant(parcours)));
     }
   }
 
-  // Garde l'adresse à jour, pour qu'un rechargement reste sur le même parcours.
+  // L'adresse affiche toujours le parcours (?parcours=1h, ?parcours=2h…) : on sait ce qu'on
+  // projette, et un rechargement reste sur le même parcours.
   function memoriserParcoursDansAdresse(parcours) {
     var params = new URLSearchParams(window.location.search);
-    if (parcours === "1h") {
-      params.set("parcours", "1h");
-    } else {
-      params.delete("parcours");
-    }
+    params.set("parcours", parcours);
     var requete = params.toString().replace(/=(?=&|$)/g, ""); // « ?admin » plutôt que « ?admin= »
     history.replaceState(null, "", window.location.pathname + (requete ? "?" + requete : "") + window.location.hash);
   }
 
   function basculerParcours() {
     var actuelle = diapos[courante];
-    preparerParcours(parcoursActuel === "1h" ? "2h" : "1h");
+    preparerParcours(parcoursSuivant(parcoursActuel));
     // Si la diapositive affichée devient facultative, on recule jusqu'à la précédente du parcours.
     var toutes = toutesLesDiapos();
     var position = toutes.indexOf(actuelle);
@@ -278,6 +293,7 @@
       }
     }
     preparerParcours(lireParcours());
+    memoriserParcoursDansAdresse(parcoursActuel);
     appliquerTheme(lireTheme());
     brancherBoutons();
     activerSwipe();
