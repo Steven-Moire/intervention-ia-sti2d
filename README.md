@@ -72,17 +72,19 @@ Puis ouvrir <http://localhost:8000>. Depuis un téléphone sur le même réseau 
 
 | Section | 1 h | 2 h |
 |---|---|---|
-| 1. Titre, nuage de mots, mains levées | 7 min | 12 min |
-| 2. Frise « Depuis quand ? », intelligence, des intelligences (2 h) | 4 min | 15 min |
-| 3. Activité « IA ou pas IA ? » + mise en commun | 12 min | 20 min |
-| 4. IA ⊃ ML ⊃ DL, effet IA (2 h), Deep Blue / AlexNet | 6 min | 12 min |
-| 5. Chaîne d'information, maintenance prédictive (2 h) | 4 min | 12 min |
+| 1. Titre, nuage de mots, mains levées | 7 min | 9 min |
+| 2. Frise « Depuis quand ? », intelligence, des intelligences (2 h) | 4 min | 10 min |
+| 3. Activité « IA ou pas IA ? » + mise en commun | 12 min | 15 min |
+| 4. IA ⊃ ML ⊃ DL, Deep Blue / AlexNet | 6 min | 8 min |
+| 5. Chaîne d'information, maintenance prédictive (2 h) | 4 min | 10 min |
 | 6. Modes d'apprentissage | 4 min | 10 min |
 | 7. Démo Teachable Machine | 7 min | 12 min |
-| 8. Neurone, réseau, CNN | 7 min | 15 min |
+| 8. Neurone, réseau, CNN, assistant conversationnel (2 h) | 7 min | 22 min |
 | 9. Enjeux | 4 min | 10 min |
 | 10. Métiers | 2 min | 5 min |
-| 11. Conclusion, questions, ressources | 1 min (+ questions) | 10 min |
+| 11. Conclusion, questions, ressources | 1 min (+ questions) | 9 min |
+
+Au-delà de 2 h, pas de parcours plus long : les élèves explorent en autonomie avec les ressources de fin et les fiches « Pour aller plus loin ».
 
 Chaque section est un bloc `<section class="diapo" data-section="N">` réutilisable : on peut en déplacer, en supprimer ou en dupliquer sans toucher au JavaScript.
 

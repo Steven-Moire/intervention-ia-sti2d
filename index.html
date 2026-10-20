@@ -306,28 +306,6 @@
   </div>
 </section>
 
-<section class="diapo" id="effet-ia" data-section="4" data-parcours="2h" aria-label="L'effet IA">
-  <div class="contenu">
-    <p class="surtitre">Un phénomène curieux</p>
-    <h2>L'«&nbsp;effet IA&nbsp;»</h2>
-    <p class="citation grand">Dès qu'une machine sait le faire, on dit que «&nbsp;ce n'est pas vraiment de l'intelligence&nbsp;».</p>
-    <div class="colonnes trois">
-      <div class="carte"><h3>Hier «&nbsp;IA&nbsp;»</h3><p>Jouer aux échecs, calculer un itinéraire, lire un texte scanné.</p></div>
-      <div class="carte"><h3>Aujourd'hui</h3><p>«&nbsp;C'est juste un programme.&nbsp;»</p></div>
-      <div class="carte accent"><h3>Conséquence</h3><p>Le mot «&nbsp;IA&nbsp;» désigne souvent… ce qui est encore nouveau.</p></div>
-    </div>
-  </div>
-  <div class="notes" role="note">
-    <ul>
-      <li>Idée souvent résumée par la formule attribuée à Larry Tesler : «&nbsp;l'IA, c'est tout ce qui n'a pas encore été fait&nbsp;».</li>
-      <li>Lien avec le marketing : aujourd'hui, on colle «&nbsp;IA&nbsp;» sur beaucoup de produits. Réflexe à avoir : «&nbsp;qu'est-ce qui est appris, et à partir de quelles données ?&nbsp;»</li>
-      <li>Diapositive facultative (parcours 2 h).</li>
-    </ul>
-    <h4>Version tableau</h4>
-    <p>Une flèche du temps. À gauche «&nbsp;1960–1990 : IA = échecs, itinéraires&nbsp;». À droite «&nbsp;aujourd'hui : simple programme&nbsp;». Au-dessus : «&nbsp;l'IA, c'est ce qui n'est pas encore banal&nbsp;».</p>
-  </div>
-</section>
-
 <section class="diapo" id="deep-blue-alexnet" data-section="4" aria-label="Deep Blue contre AlexNet">
   <div class="contenu">
     <p class="surtitre">Deux façons de faire</p>
@@ -358,6 +336,7 @@
       <li>Deep Blue (IBM) bat Garry Kasparov en mai 1997. Sa fonction d'évaluation a été ajustée en partie à partir de parties de grands maîtres, mais l'essentiel est de la recherche programmée.</li>
       <li>AlexNet (Krizhevsky, Sutskever, Hinton) gagne le concours ImageNet 2012 avec une erreur nettement plus faible que les autres méthodes. C'est le déclic du deep learning.</li>
       <li>Question à la salle : «&nbsp;Lequel des deux saurait reconnaître un chat ? Lequel saurait jouer aux dames ?&nbsp;» Réponse : aucun des deux sans être refait !</li>
+      <li>«&nbsp;Effet IA&nbsp;» (parcours 2 h, 1 min) : en 1997, Deep Blue, c'était «&nbsp;de l'IA&nbsp;» ; aujourd'hui on dit «&nbsp;c'est juste un programme&nbsp;». Formule attribuée à Larry Tesler : «&nbsp;l'IA, c'est tout ce qui n'a pas encore été fait&nbsp;». Réflexe face au marketing : «&nbsp;qu'est-ce qui est appris, et à partir de quelles données ?&nbsp;»</li>
     </ul>
     <h4>Version tableau</h4>
     <p>Deux colonnes : «&nbsp;Deep Blue 1997 : on écrit les règles, l'ordinateur cherche vite&nbsp;» | «&nbsp;AlexNet 2012 : on montre des exemples, le réseau apprend&nbsp;». Dessiner un échiquier à gauche, une photo de chat à droite.</p>
@@ -685,6 +664,43 @@
     </ul>
     <h4>Version tableau</h4>
     <p>Dessiner une grille 5×5 avec un «&nbsp;7&nbsp;» en cases noircies. Dessiner un filtre 3×3 «&nbsp;trait horizontal&nbsp;» et le faire glisser : la case résultat s'allume là où il y a un trait horizontal. Puis la chaîne : pixels → traits → formes → «&nbsp;7&nbsp;».</p>
+  </div>
+</section>
+
+<section class="diapo" id="assistant-conversationnel" data-section="8" data-parcours="2h" aria-label="Comment marche un assistant conversationnel">
+  <div class="contenu">
+    <p class="surtitre">Et les assistants conversationnels&nbsp;?</p>
+    <h2>Il prédit le mot suivant</h2>
+    <div class="colonnes schema-texte">
+      <svg class="schema" viewBox="0 0 1000 250" role="img" aria-labelledby="llm-titre">
+        <title id="llm-titre">Le modèle complète «&nbsp;Le chat dort sur le…&nbsp;» : canapé 41&nbsp;%, lit 27&nbsp;%, toit 9&nbsp;%, autres mots 23&nbsp;% (chiffres inventés pour l'exemple)</title>
+        <text x="20" y="138" font-size="36" font-weight="700" fill="#111827">Le chat dort sur le…</text>
+        <g font-size="28" fill="#111827">
+          <text x="440" y="62">canapé</text><text x="440" y="117">lit</text><text x="440" y="172">toit</text><text x="440" y="227">autres</text>
+          <text x="882" y="62">41&nbsp;%</text><text x="784" y="117">27&nbsp;%</text><text x="658" y="172">9&nbsp;%</text><text x="756" y="227">23&nbsp;%</text>
+        </g>
+        <rect x="580" y="36" width="287" height="34" rx="6" fill="#1d4ed8"/>
+        <g fill="#dbe6ff" stroke="#1d4ed8" stroke-width="2">
+          <rect x="580" y="91" width="189" height="34" rx="6"/><rect x="580" y="146" width="63" height="34" rx="6"/><rect x="580" y="201" width="161" height="34" rx="6"/>
+        </g>
+      </svg>
+      <ul>
+        <li>Entraîné sur d'<strong>énormes quantités de textes</strong> à deviner le morceau de mot suivant.</li>
+        <li>Il écrit <strong>mot après mot</strong>, en choisissant parmi les suites les plus probables.</li>
+        <li>C'est un <strong>réseau de neurones géant</strong> : des milliards de poids, comme ceux du neurone.</li>
+      </ul>
+    </div>
+    <p class="carte accent"><strong>Plausible</strong> ne veut pas dire <strong>vrai</strong> : il peut inventer une réponse avec assurance. À toi de vérifier.</p>
+  </div>
+  <div class="notes" role="note">
+    <ul>
+      <li>10 min, parcours 2 h. Faire jouer la salle d'abord : «&nbsp;Il était une…&nbsp;» → tout le monde complète «&nbsp;fois&nbsp;». «&nbsp;Vous venez de faire comme le modèle : prédire la suite la plus probable.&nbsp;»</li>
+      <li>Les pourcentages du schéma sont inventés pour l'exemple. En réalité, le modèle découpe le texte en morceaux de mots («&nbsp;tokens&nbsp;») et calcule une probabilité pour chacun des dizaines de milliers de morceaux possibles.</li>
+      <li>Ensuite, le modèle est réglé avec l'aide d'humains pour répondre de façon utile et polie. Exemples d'assistants (il en existe beaucoup) : ChatGPT, Le Chat, Gemini, Claude… Chacun a ses conditions d'âge et ses versions gratuites ou payantes.</li>
+      <li>Lien avec les enjeux qui suivent : «&nbsp;erreurs crédibles&nbsp;» = le modèle produit du plausible, il ne vérifie rien par lui-même (sauf s'il est relié à un outil de recherche).</li>
+    </ul>
+    <h4>Version tableau</h4>
+    <p>Écrire «&nbsp;Le chat dort sur le …&nbsp;». Demander trois mots à la salle, faire voter, noter un pourcentage à côté de chacun. Conclure : «&nbsp;le modèle fait ça, mot après mot, des milliers de fois&nbsp;».</p>
   </div>
 </section>
 
