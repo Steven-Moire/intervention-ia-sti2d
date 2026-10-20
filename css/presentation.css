@@ -125,6 +125,11 @@ body.js .diapo.active {
   grid-template-columns: 1fr;
 }
 
+/* Une colonne peut rétrécir sous la largeur de son mot le plus long (coupé plutôt que débordant). */
+.colonnes > * {
+  min-width: 0;
+}
+
 .carte {
   background: var(--fond-doux);
   border: 2px solid var(--bordure);
